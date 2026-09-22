@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ball" cx="38%" cy="30%" r="72%">
+      <stop offset="0%" stop-color="#5fd6cf"/>
+      <stop offset="45%" stop-color="#0f8b8d"/>
+      <stop offset="100%" stop-color="#075355"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="29" fill="url(#ball)"/>
+  <!-- Profil de tête + cœur : l'approche relationnelle en santé mentale -->
+  <g transform="translate(32,33) scale(0.84) translate(-32,-33)">
+    <path d="M41,13.5 C30,11.5 19.5,18.5 18.5,29 C18.1,33 15.6,35 14.6,37.5
+             C14,39.2 14.8,40.7 16.4,41.2 L19,42 L19,47.5
+             C19,50.3 21.2,52.5 24,52.5 L28,52.5 L28,57.5 L45,57.5 L45,44
+             C48.6,40.4 50.8,35.6 50.8,30.4 C50.8,21.3 45.3,15 41,13.5 Z"
+          fill="#ffffff" opacity="0.95"/>
+    <path d="M34,39 C22,29 25,20 30,20 C32.4,20 34,22.4 34,24.4
+             C34,22.4 35.6,20 38,20 C43,20 46,29 34,39 Z"
+          fill="#f7b500"/>
+  </g>
+</svg>
