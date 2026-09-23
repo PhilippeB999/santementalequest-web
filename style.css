@@ -253,6 +253,36 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .vehicle-showcase--maxed { animation: none; }
 }
+
+/* Posture triomphante de l'avatar à la forme ultime : couronne, étincelles
+   et légère bascule/agrandissement — on ne peut pas changer la pose de
+   l'emoji lui-même, alors on la simule autour de lui. */
+.avatar-triumph-wrap { position: relative; display: inline-flex; }
+.avatar-triumph-wrap--maxed > span { animation: triumphPose 3.2s ease-in-out infinite; transform-origin: center bottom; }
+@keyframes triumphPose {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.06) rotate(-2deg); }
+}
+.triumph-crown {
+  position: absolute; top: -16px; right: -8px;
+  font-size: 34px; transform: rotate(18deg);
+  animation: triumphCrownBounce 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.45));
+}
+@keyframes triumphCrownBounce {
+  0%, 100% { transform: rotate(18deg) translateY(0); }
+  50%      { transform: rotate(18deg) translateY(-4px); }
+}
+.triumph-sparkle { position: absolute; font-size: 18px; opacity: .9; animation: triumphSparkle 1.8s ease-in-out infinite; }
+.triumph-sparkle-1 { top: 6px; left: -16px; animation-delay: .3s; }
+.triumph-sparkle-2 { bottom: 14px; right: -14px; animation-delay: .9s; }
+@keyframes triumphSparkle {
+  0%, 100% { opacity: .35; transform: scale(.75); }
+  50%      { opacity: 1; transform: scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar-triumph-wrap--maxed > span, .triumph-crown, .triumph-sparkle { animation: none; }
+}
 .cta {
   margin-top: 20px;
   background: var(--safety-yellow);
