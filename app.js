@@ -1132,9 +1132,9 @@ function renderMap() {
 
   root.innerHTML = header("map") + `
     <div class="content">
-      <div class="vehicle-showcase">
+      <div class="vehicle-showcase${maxed ? " vehicle-showcase--maxed" : ""}">
         <div class="vehicle-frame" style="height:auto;padding:24px 0">${avatarSVG(av.id, state.avatarColor, stg, 120)}</div>
-        <div class="vehicle-caption">${avName} · ${maxed ? t("maxSize") : t("vehicleGrows")}</div>
+        <div class="vehicle-caption">${avName} · ${maxed ? "🌟 " + t("maxSize") : t("vehicleGrows")}</div>
       </div>
       <div class="progress-banner">
         <div class="progress-bar"><div class="progress-fill" style="width:${progressPct()}%"></div></div>
