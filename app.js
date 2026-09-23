@@ -222,7 +222,8 @@ function shadeColor(hex, amt) {
 }
 
 function avatarStageForXP(xp) {
-  return Math.max(0, Math.min(11, Math.floor((xp / 3500) * 12)));
+  const maxXp = (LEVELS[LEVELS.length - 1] && LEVELS[LEVELS.length - 1].min) || 3500;
+  return Math.max(0, Math.min(11, Math.floor((xp / maxXp) * 12)));
 }
 
 /* Avatar = emoji du stade courant (modèle SASI : de l œuf à la créature légendaire). */
