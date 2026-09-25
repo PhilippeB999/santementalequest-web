@@ -748,36 +748,36 @@ const LEVELS = [
    avatarStage de LEVELS. */
 const AVATAR_CHARACTERS = [
  {
-  "id": "dragon",
-  "name_fr": "Dragon",
-  "name_en": "Dragon",
-  "title_fr": "Le Sage",
-  "title_en": "The Sage",
-  "stages": ["🥚","🥚","🦎","🦎","🐲","🐲","🐉","🐉","🐉","🐉","🐉","🐉"]
+  "id": "tortuesm",
+  "name_fr": "Tortue",
+  "name_en": "Turtle",
+  "title_fr": "La Sereine",
+  "title_en": "The Serene One",
+  "stages": ["🥚","🥚","🐢","🐢","🐢","🐢","🐢","🐢","🐢","🐢","🐢","🐢"]
  },
  {
-  "id": "licorne",
-  "name_fr": "Licorne",
-  "name_en": "Unicorn",
-  "title_fr": "La Guérisseuse",
-  "title_en": "The Healer",
-  "stages": ["🥚","🥚","🐴","🐴","🦄","🦄","🦄","🦄","🦄","🦄","🦄","🦄"]
+  "id": "chatsm",
+  "name_fr": "Chat",
+  "name_en": "Cat",
+  "title_fr": "L'Apaisant",
+  "title_en": "The Soothing One",
+  "stages": ["🥚","🥚","🐱","🐱","🐈","🐈","🐈","🐈","🐈","🐈","🐈","🐈"]
  },
  {
-  "id": "phenix",
-  "name_fr": "Phénix",
-  "name_en": "Phoenix",
-  "title_fr": "Le Résilient",
-  "title_en": "The Resilient One",
-  "stages": ["🥚","🥚","🐣","🐣","🐦","🐦","🦅","🦅","🦅","🦅","🦅","🦅"]
+  "id": "elephant",
+  "name_fr": "Éléphant",
+  "name_en": "Elephant",
+  "title_fr": "La Mémoire",
+  "title_en": "The Memory Keeper",
+  "stages": ["🥚","🥚","🐘","🐘","🐘","🐘","🐘","🐘","🐘","🐘","🐘","🐘"]
  },
  {
-  "id": "griffon",
-  "name_fr": "Griffon",
-  "name_en": "Griffin",
-  "title_fr": "Le Courageux",
-  "title_en": "The Brave One",
-  "stages": ["🥚","🥚","🐱","🐱","🦁","🦁","🦁","🦁","🦁","🦁","🦁","🦁"]
+  "id": "papillonsm",
+  "name_fr": "Papillon",
+  "name_en": "Butterfly",
+  "title_fr": "La Renaissance",
+  "title_en": "The Rebirth",
+  "stages": ["🥚","🥚","🐛","🐛","🐛","🐛","🦋","🦋","🦋","🦋","🦋","🦋"]
  }
 ];
 
