@@ -629,7 +629,7 @@ function isAccessGranted() {
    verrou d'un cran, sur les PALIERS :
 
      • Palier 1 — Débutant (14 questions, fondements et communication) : GRATUIT
-     • Palier 2 — Intermédiaire (13 questions) : licence requise
+     • Palier 2 — Intermédiaire (12 questions) : licence requise
      • Palier 3 — Avancé (13 questions) : licence requise
 
    L'élève a ainsi un tiers du contenu en démonstration réelle (assez pour

@@ -29,7 +29,7 @@
 
    ⚠️ STRUCTURE PARTICULIÈRE : cette app ne compte qu'UNE compétence
    officielle. La profondeur est donc portée par les 3 paliers
-   (14 + 13 + 13 = 40 questions), chacun ayant son propre thème
+   (14 + 12 + 13 = 39 questions), chacun ayant son propre thème
    (tier.theme_fr / theme_en, affiché sur la carte et à l'intro).
 
    Format des choix: chaque question a un tableau "choices" où chaque
@@ -338,14 +338,6 @@ const COMPETENCIES = [
           ],
           explFr: "Les symptômes positifs s'ajoutent au fonctionnement normal (hallucinations, idées délirantes) ; les symptômes négatifs correspondent à ce qui est en moins (retrait, apathie, émoussement affectif). Ces derniers sont souvent sous-estimés.",
           explEn: "Positive symptoms are additions to normal functioning (hallucinations, delusions); negative symptoms are what is missing (withdrawal, apathy, blunted affect). The latter are often underestimated."
-        },
-        {
-          type: "tf",
-          fr: "Dans l'ensemble, les personnes vivant avec un trouble de santé mentale sont plus souvent victimes de violence qu'auteures de violence.",
-          en: "Overall, people living with a mental health disorder are more often victims of violence than perpetrators of violence.",
-          isTrue: true,
-          explFr: "Vrai. L'association entre trouble mental et dangerosité est largement exagérée dans l'imaginaire populaire. Le savoir aide l'intervenant à garder une attitude juste, sans méfiance excessive.",
-          explEn: "True. The link between mental disorder and dangerousness is greatly exaggerated in popular belief. Knowing this helps caregivers keep a fair attitude, without excessive wariness."
         },
         {
           ...scenario(
@@ -730,7 +722,7 @@ const UI_TEXT = {
 };
 
 /* ---- Paliers de niveau (basés sur XP total) ----
-   ⚠️ Cette app ne compte qu'une compétence (40 questions au total) : le XP
+   ⚠️ Cette app ne compte qu'une compétence (39 questions au total) : le XP
    maximal atteignable est plus bas que dans les apps à 10 compétences. Les
    seuils sont donc resserrés pour que l'avatar évolue vraiment jusqu'au bout. */
 const LEVELS = [
