@@ -29,7 +29,7 @@
 
    ⚠️ STRUCTURE PARTICULIÈRE : cette app ne compte qu'UNE compétence
    officielle. La profondeur est donc portée par les 3 paliers
-   (14 + 12 + 13 = 39 questions), chacun ayant son propre thème
+   (14 + 20 + 13 = 47 questions), chacun ayant son propre thème
    (tier.theme_fr / theme_en, affiché sur la carte et à l'intro).
 
    Format des choix: chaque question a un tableau "choices" où chaque
@@ -396,6 +396,100 @@ const COMPETENCIES = [
           ],
           explFr: "La relation d'aide vise l'autonomie : la personne reste actrice de sa situation. Donner des solutions toutes faites ou parler de soi déplace le centre de l'échange.",
           explEn: "The helping relationship aims at autonomy: the person remains the actor in their own situation. Handing out ready-made solutions or talking about yourself shifts the focus of the exchange."
+        },
+        {
+          fr: "Quelle est la principale différence entre le trouble d'anxiété généralisée et le trouble panique ?",
+          en: "What is the main difference between generalized anxiety disorder and panic disorder?",
+          choices: [
+            ch("Le trouble d'anxiété généralisée se manifeste par une inquiétude excessive et persistante face à plusieurs sujets du quotidien, alors que le trouble panique se manifeste par des crises soudaines et intenses", "Generalized anxiety disorder involves excessive, persistent worry about several everyday topics, while panic disorder involves sudden, intense attacks", true),
+            ch("Le trouble d'anxiété généralisée se manifeste par des crises soudaines, alors que le trouble panique est une inquiétude constante", "Generalized anxiety disorder involves sudden attacks, while panic disorder is constant worry"),
+            ch("Ce sont deux noms différents pour exactement le même trouble", "These are just two different names for the exact same disorder"),
+            ch("Le trouble panique ne touche que les enfants", "Panic disorder only affects children")
+          ],
+          explFr: "Le TAG se caractérise par une inquiétude diffuse et chronique (6 mois ou plus) portant sur plusieurs sphères de vie. Le trouble panique se manifeste plutôt par des attaques ponctuelles, intenses, avec des symptômes physiques marqués (palpitations, souffle court, peur de mourir). Bien reconnaître lequel est en cause oriente l'intervention.",
+          explEn: "GAD is characterized by diffuse, chronic worry (6 months or more) about several areas of life. Panic disorder instead involves discrete, intense attacks with marked physical symptoms (palpitations, shortness of breath, fear of dying). Correctly identifying which one is at play guides the intervention."
+        },
+        {
+          fr: "Qu'est-ce qui distingue un trouble bipolaire d'un trouble dépressif majeur ?",
+          en: "What distinguishes bipolar disorder from major depressive disorder?",
+          choices: [
+            ch("Le trouble bipolaire comporte aussi des épisodes de manie ou d'hypomanie (énergie et impulsivité accrues), en plus des épisodes dépressifs", "Bipolar disorder also includes manic or hypomanic episodes (increased energy and impulsivity), in addition to depressive episodes", true),
+            ch("Le trouble bipolaire ne touche jamais l'humeur de la personne", "Bipolar disorder never affects a person's mood"),
+            ch("La dépression majeure implique toujours des hallucinations", "Major depression always involves hallucinations"),
+            ch("Il n'y a aucune différence clinique entre les deux", "There is no clinical difference between the two")
+          ],
+          explFr: "La dépression majeure ne comprend que des épisodes dépressifs. Le trouble bipolaire alterne des épisodes dépressifs avec des épisodes maniaques ou hypomaniaques. Confondre les deux peut mener à une observation incomplète, car les signes de manie sont parfois pris pour de la simple bonne humeur.",
+          explEn: "Major depression involves only depressive episodes. Bipolar disorder alternates depressive episodes with manic or hypomanic episodes. Confusing the two can lead to incomplete observation, since signs of mania are sometimes mistaken for simple good spirits."
+        },
+        {
+          ...scenario(
+            "Un usager parle très rapidement, saute d'une idée à l'autre, dit avoir dormi 2 heures cette semaine sans se sentir fatigué, et a dépensé toutes ses économies en une soirée. Que devez-vous rapporter ?",
+            "A client speaks very quickly, jumps from one idea to another, says he has slept 2 hours this week without feeling tired, and spent all his savings in one evening. What should you report?",
+            [
+              ch("Rien : c'est simplement de la bonne humeur", "Nothing: it's simply good spirits"),
+              ch("Ces signes évoquent un épisode maniaque (fuite des idées, diminution du besoin de sommeil, impulsivité) à rapporter sans délai", "These signs suggest a manic episode (racing thoughts, decreased need for sleep, impulsivity) to be reported promptly", true),
+              ch("Lui dire simplement d'arrêter de dépenser", "Simply tell him to stop spending"),
+              ch("Attendre de voir si ça s'aggrave avant d'en parler", "Wait to see if it worsens before mentioning it")
+            ]),
+          explFr: "La fuite des idées, la diminution du besoin de sommeil et l'impulsivité (dépenses, décisions à risque) sont des signes classiques de manie. Ils doivent être rapportés rapidement : un épisode maniaque peut évoluer et comporte des risques réels pour la personne.",
+          explEn: "Racing thoughts, decreased need for sleep and impulsivity (spending, risky decisions) are classic signs of mania. They must be reported promptly: a manic episode can escalate and carries real risks for the person."
+        },
+        {
+          fr: "Quelle est la différence principale entre un trouble psychotique bref et la schizophrénie ?",
+          en: "What is the main difference between brief psychotic disorder and schizophrenia?",
+          choices: [
+            ch("La durée : le trouble psychotique bref dure moins d'un mois, alors que la schizophrénie exige des signes présents depuis au moins 6 mois", "The duration: brief psychotic disorder lasts less than a month, while schizophrenia requires signs present for at least 6 months", true),
+            ch("Le trouble psychotique bref ne cause jamais d'hallucinations", "Brief psychotic disorder never causes hallucinations"),
+            ch("La schizophrénie ne cause jamais d'idées délirantes", "Schizophrenia never causes delusions"),
+            ch("Ce sont deux termes pour le même trouble", "These are two terms for the same disorder")
+          ],
+          explFr: "Les deux troubles peuvent présenter hallucinations et idées délirantes ; ce qui les distingue est surtout la durée et l'évolution des symptômes. Le trouble psychotique bref est ponctuel et de courte durée, souvent lié à un stress important, alors que la schizophrénie est un trouble chronique.",
+          explEn: "Both disorders can present hallucinations and delusions; what mainly distinguishes them is the duration and course of symptoms. Brief psychotic disorder is short-lived, often linked to significant stress, while schizophrenia is a chronic disorder."
+        },
+        {
+          fr: "Quel élément caractérise le trouble de la personnalité limite (borderline) ?",
+          en: "What characterizes borderline personality disorder?",
+          choices: [
+            ch("Une froideur émotionnelle constante et une absence totale d'attachement aux autres", "Constant emotional coldness and a total absence of attachment to others"),
+            ch("Une instabilité marquée des relations, de l'image de soi et des émotions, avec parfois des gestes autodestructeurs", "Marked instability in relationships, self-image and emotions, sometimes with self-harming behaviour", true),
+            ch("Une peur exclusive de se trouver dans des lieux publics", "An exclusive fear of being in public places"),
+            ch("Une perte de contact avec la réalité en tout temps", "A constant loss of touch with reality")
+          ],
+          explFr: "Le trouble de la personnalité limite se caractérise par une grande instabilité émotionnelle, des relations intenses et changeantes, une image de soi fragile, et parfois de l'automutilation ou des idées suicidaires. La constance et la sécurité dans la relation d'aide sont particulièrement importantes avec cette clientèle.",
+          explEn: "Borderline personality disorder is characterized by marked emotional instability, intense and shifting relationships, a fragile self-image, and sometimes self-harm or suicidal ideation. Consistency and safety in the helping relationship are especially important with this population."
+        },
+        {
+          type: "tf",
+          fr: "Le sevrage et l'intoxication à une substance produisent toujours exactement les mêmes signes cliniques.",
+          en: "Withdrawal from and intoxication with a substance always produce exactly the same clinical signs.",
+          isTrue: false,
+          explFr: "Faux. Le sevrage et l'intoxication peuvent produire des signes opposés. Par exemple, l'intoxication à l'alcool cause une sédation, alors que le sevrage peut causer agitation, tremblements, et même des convulsions. Bien distinguer les deux oriente la surveillance et l'intervention.",
+          explEn: "False. Withdrawal and intoxication can produce opposite signs. For example, alcohol intoxication causes sedation, while alcohol withdrawal can cause agitation, tremors, and even seizures. Correctly distinguishing the two guides monitoring and intervention."
+        },
+        {
+          ...scenario(
+            "Un usager connu pour une consommation régulière d'alcool a cessé de boire depuis 24 heures. Il présente tremblements, agitation, sudation et anxiété marquée. Que faites-vous ?",
+            "A client known for regular alcohol use stopped drinking 24 hours ago. He shows tremors, agitation, sweating and marked anxiety. What do you do?",
+            [
+              ch("Ignorer : ce sont des signes normaux de manque qui passeront seuls", "Ignore it: these are normal withdrawal signs that will pass on their own"),
+              ch("Rapporter sans délai : ces signes évoquent un sevrage alcoolique, qui peut évoluer vers des convulsions ou un delirium tremens", "Report promptly: these signs suggest alcohol withdrawal, which can progress to seizures or delirium tremens", true),
+              ch("Lui offrir un verre d'alcool pour calmer les symptômes", "Offer him a drink of alcohol to calm the symptoms"),
+              ch("Attendre 48 heures avant d'intervenir", "Wait 48 hours before intervening")
+            ]),
+          explFr: "Le sevrage alcoolique peut évoluer rapidement et devenir dangereux (convulsions, delirium tremens). Les signes précoces (tremblements, agitation, sudation, anxiété) doivent être rapportés sans délai pour permettre une surveillance et une prise en charge appropriées.",
+          explEn: "Alcohol withdrawal can progress quickly and become dangerous (seizures, delirium tremens). Early signs (tremors, agitation, sweating, anxiety) must be reported promptly to allow proper monitoring and management."
+        },
+        {
+          fr: "Quelle est une différence clinique entre l'anorexie mentale et la boulimie ?",
+          en: "What is a clinical difference between anorexia nervosa and bulimia?",
+          choices: [
+            ch("Dans l'anorexie, le poids est généralement très bas en raison d'une restriction alimentaire sévère, alors que dans la boulimie, le poids est souvent normal malgré des cycles de crises de boulimie et de compensation", "In anorexia, weight is generally very low due to severe food restriction, while in bulimia, weight is often normal despite cycles of binge eating and compensatory behaviour", true),
+            ch("Ces troubles ne touchent que les hommes", "These disorders only affect men"),
+            ch("La boulimie n'implique jamais de comportements compensatoires (vomissements, laxatifs, exercice excessif)", "Bulimia never involves compensatory behaviours (vomiting, laxatives, excessive exercise)"),
+            ch("L'anorexie ne comporte aucun risque médical", "Anorexia carries no medical risk")
+          ],
+          explFr: "Le poids très bas de l'anorexie la rend souvent plus visible, alors que le poids normal de la boulimie peut la rendre plus difficile à détecter. Dans les deux cas, une surveillance attentive (signes physiques, comportements alimentaires, état émotionnel) et un signalement rapide sont essentiels vu les risques médicaux réels.",
+          explEn: "The very low weight in anorexia often makes it more visible, while the normal weight in bulimia can make it harder to detect. In both cases, careful monitoring (physical signs, eating behaviours, emotional state) and prompt reporting are essential given the real medical risks."
         }
       ]
     },
@@ -722,7 +816,7 @@ const UI_TEXT = {
 };
 
 /* ---- Paliers de niveau (basés sur XP total) ----
-   ⚠️ Cette app ne compte qu'une compétence (39 questions au total) : le XP
+   ⚠️ Cette app ne compte qu'une compétence (47 questions au total) : le XP
    maximal atteignable est plus bas que dans les apps à 10 compétences. Les
    seuils sont donc resserrés pour que l'avatar évolue vraiment jusqu'au bout. */
 const LEVELS = [
