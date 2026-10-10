@@ -4,7 +4,7 @@
    ⚠️ Bumper la version du CACHE à CHAQUE déploiement
       (santementalequest-v1 -> v2 -> v3 ...). */
 
-const CACHE = "santementalequest-v13";
+const CACHE = "santementalequest-v14";
 const ASSETS = [
   "index.html",
   "theme-saisonnier.js",
