@@ -3,9 +3,9 @@
    Approche privilégiée en santé mentale (SASI 5325, compétence 20)
    Moteur cloné de PédiatrieQuest (lui-même cloné de SASIQuest).
 
-   ⚠️ PARTICULARITÉ DE CETTE APP : une seule compétence officielle.
-   Le verrou freemium est donc PAR PALIER et non par compétence
-   (voir FREE_TIERS / isTierPremiumLocked plus bas).
+   8 compétences : approche_sante_mentale (compétence 20) + 7 compétences
+   sm_* sur les grands troubles (ajout nov. 2026). Verrou freemium standard
+   par compétence (FREE_COMPETENCIES = 3).
    ============================================================ */
 
 const STORAGE_KEY = "santementalequest_state_v1";
@@ -587,9 +587,8 @@ function header(activeTab) {
   </nav>`;
 }
 
-/* ⚠️ Avec UNE seule compétence, une jauge « badges / compétences » ne pourrait
-   afficher que 0 % ou 100 % — inutilisable. On compte donc les PALIERS réussis
-   (3 au total), ce qui donne une progression lisible : 33 %, 67 %, 100 %. */
+/* La jauge compte les PALIERS réussis (3 par compétence), hérité de
+   l'époque à une seule compétence ; ça reste plus fin que les badges. */
 function tiersTotal() {
   return COMPETENCIES.reduce((n, c) => n + c.tiers.length, 0);
 }
@@ -625,26 +624,20 @@ function isAccessGranted() {
 }
 
 /* ------------------ Accès freemium (licence vs gratuit) ------------------
-   Modèle d'affaires des autres apps Quest : les FREE_COMPETENCIES premières
-   compétences sont gratuites, les suivantes sont verrouillées « premium ».
+   Modèle d'affaires standard des apps Quest : les FREE_COMPETENCIES premières
+   compétences (tous leurs paliers) sont gratuites ; les suivantes restent
+   VISIBLES sur la carte mais verrouillées « premium » sans licence.
 
-   ⚠️ SantéMentaleQuest ne compte qu'UNE compétence officielle (compétence 20
-   du DEP 5325). Le découpage par compétence n'a donc aucun sens ici : avec
-   FREE_COMPETENCIES = 3, TOUT serait gratuit ; avec 0, tout serait payant dès
-   la première question et l'élève n'aurait rien à essayer. On descend donc le
-   verrou d'un cran, sur les PALIERS :
-
-     • Palier 1 — Débutant (14 questions, fondements et communication) : GRATUIT
-     • Palier 2 — Intermédiaire (20 questions) : licence requise
-     • Palier 3 — Avancé (13 questions) : licence requise
-
-   L'élève a ainsi un tiers du contenu en démonstration réelle (assez pour
-   juger de la qualité et pour qu'un enseignant fasse une démo en classe),
-   et le badge de maîtrise — qui s'obtient au palier 3 — reste derrière la
-   licence. Comme ailleurs, ce verrou est INDÉPENDANT de l'essai de 7 jours :
-   il ne dépend que de isLicensed(). */
-const FREE_TIERS = 1;        // paliers gratuits sans licence (1 = Débutant seulement)
-const FREE_COMPETENCIES = 0; // conservé pour la forme : le verrou par compétence est désactivé ici
+   Historique : quand SantéMentaleQuest ne comptait qu'UNE compétence, le
+   verrou était descendu au niveau des PALIERS (FREE_TIERS = 1). Depuis l'ajout
+   des compétences sm_* (nov. 2026), on revient au verrou standard :
+     • compétences 1 à 3 (approche, schizophrénie, psychose) : GRATUITES
+     • compétences 4 à 8 : licence requise
+   Effet pour un élève existant sans licence : ses paliers 2 et 3 de
+   l'approche en santé mentale deviennent gratuits (rien ne lui est retiré).
+   Ce verrou est INDÉPENDANT de l'essai de 7 jours : il ne dépend que de
+   isLicensed(). */
+const FREE_COMPETENCIES = 3; // nombre de compétences gratuites sans licence
 
 function isLicensed() {
   return !!state.accessCode;
@@ -679,19 +672,16 @@ async function verifyLicenseCode(code) {
   }
 }
 
-/* true = PALIER bloqué faute de licence (visible sur la carte, non jouable).
-   C'est le verrou réel de cette app (voir le bloc FREE_TIERS ci-dessus). */
+/* Verrou par PALIER : désactivé (voir le bloc freemium ci-dessus). La
+   fonction reste en place, toujours fausse, car questNode et openQuest
+   l'appellent encore. */
 function isTierPremiumLocked(level) {
-  return !isLicensed() && level > FREE_TIERS;
+  return false;
 }
 
-/* true = compétence ENTIÈRE bloquée. Ici : jamais, puisque le palier 1 de
-   l'unique compétence est gratuit. La fonction est conservée (et utilisée
-   telle quelle par questNode/openQuest) pour garder le moteur identique aux
-   autres apps Quest : si SantéMentaleQuest recevait un jour une 2e
-   compétence, il suffirait de redonner une valeur à FREE_COMPETENCIES. */
+/* true = compétence ENTIÈRE bloquée (visible sur la carte, non jouable). */
 function isPremiumLocked(comp) {
-  return !isLicensed() && FREE_COMPETENCIES > 0 && comp.order > FREE_COMPETENCIES;
+  return !isLicensed() && comp.order > FREE_COMPETENCIES;
 }
 
 /* Appel à l'action bilingue, rendu via state.lang. */
@@ -700,8 +690,8 @@ function premiumLockText() {
     fr: {
       badge: "🔒 Licence requise",
       title: "Contenu réservé aux centres licenciés",
-      body: "Le palier Débutant est gratuit au complet. Les paliers Intermédiaire et Avancé sont réservés aux centres licenciés. Tu as un code d'accès ? Entre-le ci-dessous pour débloquer toute la compétence.",
-      nodeNote: "🔒 Paliers Intermédiaire et Avancé : licence requise",
+      body: `Les ${FREE_COMPETENCIES} premières compétences sont gratuites. Tu as un code d'accès ? Entre-le ci-dessous pour débloquer tout le programme.`,
+      nodeNote: "🔒 Licence requise",
       or: "ou",
       cta: "Nous écrire pour une licence",
       close: "Fermer"
@@ -709,8 +699,8 @@ function premiumLockText() {
     en: {
       badge: "🔒 License required",
       title: "Reserved for licensed training centers",
-      body: "The Beginner tier is entirely free. The Intermediate and Advanced tiers are reserved for licensed training centers. Already have an access code? Enter it below to unlock the whole competency.",
-      nodeNote: "🔒 Intermediate and Advanced tiers: license required",
+      body: `The first ${FREE_COMPETENCIES} competencies are free. Already have an access code? Enter it below to unlock the full program.`,
+      nodeNote: "🔒 License required",
       or: "or",
       cta: "Contact us for a license",
       close: "Close"
@@ -1286,6 +1276,10 @@ function questNode(c) {
   if (mastered) cls += " done";
   else if (!playable) cls += " locked";
   if (premiumLocked) cls += " premium-locked";
+  /* Affichage « une seule compétence » (pastilles empilées avec le thème du
+     palier) : seulement si la carte ne compte qu'un nœud. Avec 8 compétences,
+     les pastilles reprennent le format compact en ligne des autres apps. */
+  const single = COMPETENCIES.length === 1;
   /* Pastilles de palier. Trois états possibles de verrou, dans cet ordre :
      1) palier premium (licence requise) → cliquable, ouvre la pop-up de code ;
      2) palier non encore déverrouillé (palier précédent non réussi) → inerte ;
@@ -1296,7 +1290,7 @@ function questNode(c) {
     const tierUnlocked = isTierUnlocked(c, tm.level);
     const tierPremium = isTierPremiumLocked(tm.level);
     const tName = state.lang === "fr" ? tm.name_fr : tm.name_en;
-    const tTheme = tier ? (state.lang === "fr" ? tier.theme_fr : tier.theme_en) : "";
+    const tTheme = (single && tier) ? (state.lang === "fr" ? tier.theme_fr : tier.theme_en) : "";
     const nQ = tier ? tier.questions.length : 0;
     let pcls = "tier-pill";
     if (tierDone) pcls += " done";
@@ -1310,7 +1304,7 @@ function questNode(c) {
       <span class="tier-pill-head">
         <span class="tier-pill-icon">${icon}</span>
         <span class="tier-pill-name">${tName}</span>
-        ${tierDone ? `<span class="tier-pill-score">${tierDone.best}%</span>` : `<span class="tier-pill-count">${nQ} Q</span>`}
+        ${tierDone ? `<span class="tier-pill-score">${tierDone.best}%</span>` : (single ? `<span class="tier-pill-count">${nQ} Q</span>` : "")}
       </span>
       ${tTheme ? `<span class="tier-pill-theme">${tTheme}</span>` : ""}
     </button>`;
@@ -1329,7 +1323,7 @@ function questNode(c) {
             : (c.hours ? `<div class="quest-meta">${c.hours} ${t("hours")}</div>` : "")}
         </div>
       </div>
-      ${playable ? `<div class="tier-row">${tierPills}</div>` : ""}
+      ${playable ? `<div class="tier-row${single ? " tier-row--stacked" : ""}">${tierPills}</div>` : ""}
     </div>`;
 }
 

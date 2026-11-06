@@ -1,7 +1,7 @@
 {
   "name": "SantéMentaleQuest",
   "short_name": "SantéMentale",
-  "description": "Révision gamifiée — approche privilégiée en santé mentale (DEP 5325, compétence 20).",
+  "description": "Révision gamifiée en santé mentale (DEP 5325) — approche, grands troubles, médication, crise.",
   "lang": "fr-CA",
   "start_url": "index.html",
   "scope": ".",
