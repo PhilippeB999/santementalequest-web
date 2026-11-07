@@ -857,3 +857,14 @@ button {
 .msg-acc.on { background: var(--safety-yellow); color: #1c1c1c; border-color: var(--safety-yellow); font-weight: 700; }
 .msg-etat { font-size: 12px; color: var(--muted); margin-top: 8px; }
 @media (max-width: 340px) { .msg-accuses { grid-template-columns: 1fr; } }
+
+/* ---------- Nom de l'application (en haut de chaque écran) ---------- */
+.app-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: var(--text);
+  padding: 14px 16px 0;
+}
+.app-title + .topbar { padding-top: 8px; }
