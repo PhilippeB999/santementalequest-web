@@ -867,4 +867,12 @@ button {
   color: var(--text);
   padding: 14px 16px 0;
 }
-.app-title + .topbar { padding-top: 8px; }
+.app-subtitle {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 2px 16px 0;
+  line-height: 1.3;
+}
+.app-title + .topbar, .app-subtitle + .topbar { padding-top: 8px; }

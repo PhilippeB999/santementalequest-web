@@ -564,6 +564,7 @@ function header(activeTab) {
   const lvlName = state.lang === "fr" ? lvl.name_fr : lvl.name_en;
   return `
   <div class="app-title">🧠 ${UI_TEXT[state.lang].appName}</div>
+  <div class="app-subtitle">${t("tagline")}</div>
   <div class="topbar">
     <div class="brand">
       <span class="avatar-chip">${avatarSVG(state.avatarChar, state.avatarColor, avatarStageForXP(state.xp), 42)}</span>
